@@ -7,6 +7,8 @@ import ColorSwitcher from "./components/ColorSwitcher";
 import FaceTracking from "./FaceTracking";
 import Avatar from "./Avatar";
 import Loader from "./Loader";
+import AvatarSwitcher from "./AvatarSwitcher";
+
 
 function App() {
   const [url, setUrl] = useState<string>(
@@ -45,6 +47,12 @@ function App() {
           <Avatar url={url} onLoaded={() => setAvatarReady(true)} />
         </Suspense>
       </Canvas>
+      
+            {/* Avatar switcher */}
+      <AvatarSwitcher selectedUrl={url} onSelect={(newUrl) => {
+        setAvatarReady(false); // reset loading state
+        setUrl(newUrl);
+      }} />
 
       {/* UI components */}
       <ColorSwitcher />
